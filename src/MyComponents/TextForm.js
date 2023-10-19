@@ -14,6 +14,16 @@ export default function TextForm(props) {
         setText(newText);
         props.showAlert("Converted to lowercase", "success");
     }
+     const handleCopy = () => {
+    let newText = navigator.clipboard.writeText(text);
+    // setText(newText);
+    props.showAlert("Copied", "success");
+  };
+  const handleClear = () => {
+    let newText = "";
+    setText(newText);
+    props.showAlert("Text Clear", "success");
+  };
     const handleOnChange= (event)=>{
         setText(event.target.value);
     }
@@ -29,6 +39,8 @@ export default function TextForm(props) {
 </div>
 <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert to upper case</button>
 <button className="btn btn-primary mx-1" onClick={handleLowClick}>Convert to lower case</button>
+<button className="btn btn-primary mx-1" onClick={handleCopy}>Copy text</button>
+<button className="btn btn-primary mx-1" onClick={handleClear}>Clear text</button>
     </div>
     <div className="container my-3" style={{color: props.mode === 'dark'? 'white':'black'}} >
       <h2>Your text summery</h2>
